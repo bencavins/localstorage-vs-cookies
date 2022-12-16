@@ -6,11 +6,11 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.get('/authenticate-token', (req, res) => {
-  res.json({ token: 'abc' });
+  res.json({ token: 'login-token-value' });
 });
 
 app.get('/authenticate-cookie', (req, res) => {
-  res.cookie('token', 'abc', { httpOnly: true });
+  res.cookie('token', 'login-token-value', { httpOnly: true });
   res.json({ message: 'Token cookie set!' });
 });
 
@@ -25,7 +25,7 @@ app.get('/user-data', (req, res) => {
       .split('=')[1];
   }
   console.log('Token: ' + token);
-  if (token === 'abc') {
+  if (token === 'login-token-value') {
     // dummy validation, would verify JWT here in reality
     res.json({ message: 'Success!', data: 'Some super secret data!' });
   } else {
