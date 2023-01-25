@@ -78,11 +78,13 @@ function renderUserInput(msg, imageUrl) {
     .then(messages => {
       let content = ''
       for (message of messages) {
+        const image = message['img-src']
+        const text = message['message-text']
         const renderedContent = `
           <div>
             <p>
-              <img src="${message['img-src']}" alt="${message['message-text']}">
-              ${message['message-text']}
+              <img src="${image}" alt="${text}" \>
+              ${text}
             </p>
           </div>
         `;
